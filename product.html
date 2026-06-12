@@ -32,11 +32,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   Add To Cart
 </button>
   <script>
-dataLayer.push({
+   window.dataLayer = window.dataLayer || [];
+  dataLayer.push({
   event: "view_item",
   product_name: "AI Course",
   price: 999
 });
+
+   document
+.getElementById("add-to-cart-btn")
+.addEventListener("click", function(){
+
+  dataLayer.push({
+    event:"add_to_cart",
+    product_name:"AI Course",
+    price:999,
+    quantity:1
+  });
+
+});
+
 </script>
   
 </body>
