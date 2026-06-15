@@ -31,24 +31,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button id="add-to-cart-btn">
   Add To Cart
 </button>
-  <script>
-   window.dataLayer = window.dataLayer || [];
-  dataLayer.push({
-  event: "view_item",
-  product_name: "AI Course",
-  price: 999,
-  quantity:1
+<button id="purchase-btn">
+ Buy Now
+</button>
+
+ <script>
+
+window.dataLayer = window.dataLayer || [];
+
+
+// view_item
+
+dataLayer.push({
+  event:"view_item",
+  ecommerce:{
+    items:[
+      {
+        item_id:"AI001",
+        item_name:"AI Course",
+        price:999,
+        quantity:1
+      }
+    ]
+  }
 });
 
-   document
+
+// add_to_cart
+
+document
 .getElementById("add-to-cart-btn")
 .addEventListener("click", function(){
 
   dataLayer.push({
     event:"add_to_cart",
-    product_name:"AI Course",
-    price:999,
-    quantity:1
+    ecommerce:{
+      items:[
+        {
+          item_id:"AI001",
+          item_name:"AI Course",
+          price:999,
+          quantity:1
+        }
+      ]
+    }
+  });
+
+});
+
+
+// purchase
+
+document
+.getElementById("purchase-btn")
+.addEventListener("click", function(){
+
+  dataLayer.push({
+    event:"purchase",
+    ecommerce:{
+      transaction_id:"T001",
+      value:999,
+      currency:"TWD",
+      items:[
+        {
+          item_id:"AI001",
+          item_name:"AI Course",
+          price:999,
+          quantity:1
+        }
+      ]
+    }
   });
 
 });
