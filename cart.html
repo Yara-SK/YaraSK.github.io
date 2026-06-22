@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+w[l]=w[l]||[];
+w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),
+dl=l!='dataLayer'?'&l='+l:'';
+
+j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+
+f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-WRCX9TWB');
+</script>
+
+<!-- End Google Tag Manager -->
+
+
+<title>Cart</title>
+
+</head>
+
+
+
+<body>
+
+
+<!-- Google Tag Manager (noscript) -->
+
+<noscript>
+
+<iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-WRCX9TWB"
+height="0"
+width="0"
+style="display:none">
+</iframe>
+
+</noscript>
+
+<!-- End Google Tag Manager -->
+
+
+
+<h1>Shopping Cart</h1>
+
+
+<div id="cart-item">
+
+</div>
+
+
+<button id="checkout-btn">
+Go Checkout
+</button>
+
+
+
+
+<script>
+
+
+window.dataLayer = window.dataLayer || [];
+
+
+
+// =====================
+// 取得商品資料
+// =====================
+
+
+const params =
+new URLSearchParams(window.location.search);
+
+
+
+const itemId =
+params.get("id") || "AI001";
+
+
+const itemName =
+params.get("name") || "AI Course";
+
+
+const itemPrice =
+Number(params.get("price")) || 999;
+
+
+
+const item = {
+
+item_id:itemId,
+
+item_name:itemName,
+
+price:itemPrice,
+
+quantity:1
+
+};
+
+
+
+
+
+// =====================
+// 顯示購物車
+// =====================
+
+
+document
+.getElementById("cart-item")
+.innerHTML = `
+
+<h2>${itemName}</h2>
+
+<p>
+Price: $${itemPrice}
+</p>
+
+<p>
+Quantity: 1
+</p>
+
+`;
+
+
+
+
+
+// =====================
+// view_cart
+// =====================
+
+
+dataLayer.push({
+
+event:"view_cart",
+
+ecommerce:{
+
+value:itemPrice,
+
+currency:"TWD",
+
+items:[
+
+item
+
+]
+
+}
+
+});
+
+
+
+
+
+
+
+// =====================
+// begin_checkout
+// =====================
+
+
+document
+.getElementById("checkout-btn")
+.addEventListener("click",function(){
+
+
+dataLayer.push({
+
+event:"begin_checkout",
+
+ecommerce:{
+
+value:itemPrice,
+
+currency:"TWD",
+
+items:[
+
+item
+
+]
+
+}
+
+});
+
+
+
+// 前往 checkout
+
+window.location.href =
+"checkout.html?id="
++itemId
++"&name="
++encodeURIComponent(itemName)
++"&price="
++itemPrice;
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
