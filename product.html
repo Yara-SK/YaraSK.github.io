@@ -1,113 +1,243 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SV8H6QHPD3"></script>
+
+<!-- Google Tag Manager -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+(function(w,d,s,l,i){
+w[l]=w[l]||[];
+w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
 
-  gtag('config', 'G-SV8H6QHPD3');
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),
+dl=l!='dataLayer'?'&l='+l:'';
+
+j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+
+f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-WRCX9TWB');
 </script>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WRCX9TWB');</script>
-<!-- End Google Tag Manager -->
-  <title>Product Page</title>
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRCX9TWB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<h1>AI Course Product</h1>
 
-<p>Price: $999</p>
+<!-- End Google Tag Manager -->
+
+
+<title>Product Page</title>
+
+</head>
+
+
+<body>
+
+
+<!-- Google Tag Manager (noscript) -->
+
+<noscript>
+
+<iframe 
+src="https://www.googletagmanager.com/ns.html?id=GTM-WRCX9TWB"
+height="0"
+width="0"
+style="display:none;visibility:hidden">
+</iframe>
+
+</noscript>
+
+<!-- End Google Tag Manager -->
+
+
+<h1 id="product-name">
+Product
+</h1>
+
+
+<p>
+Price: $<span id="product-price"></span>
+</p>
+
 
 <button id="add-to-cart-btn">
-  Add To Cart
-</button>
-<button id="purchase-btn">
- Buy Now
+Add To Cart
 </button>
 
- <script>
+
+<button id="purchase-btn">
+Buy Now
+</button>
+
+
+
+<script>
+
 
 window.dataLayer = window.dataLayer || [];
 
 
+// ======================
+// 取得 index.html 傳來的商品資料
+// ======================
+
+const params =
+new URLSearchParams(window.location.search);
+
+
+const itemId =
+params.get("id") || "AI001";
+
+
+const itemName =
+params.get("name") || "AI Course";
+
+
+const itemPrice =
+Number(params.get("price")) || 999;
+
+
+
+// 顯示商品
+
+document
+.getElementById("product-name")
+.innerText=itemName;
+
+
+document
+.getElementById("product-price")
+.innerText=itemPrice;
+
+
+
+// ======================
 // view_item
+// ======================
+
 
 dataLayer.push({
-  event:"view_item",
-  ecommerce:{
-    items:[
-      {
-        item_id:"AI001",
-        item_name:"AI Course",
-        price:999,
-        quantity:1
-      }
-    ]
-  }
+
+event:"view_item",
+
+ecommerce:{
+
+items:[
+
+{
+item_id:itemId,
+
+item_name:itemName,
+
+price:itemPrice,
+
+quantity:1
+}
+
+]
+
+}
+
 });
 
 
+
+
+
+// ======================
 // add_to_cart
+// ======================
+
 
 document
 .getElementById("add-to-cart-btn")
-.addEventListener("click", function(){
+.addEventListener("click",function(){
 
-  dataLayer.push({
-    event:"add_to_cart",
-    ecommerce:{
-      items:[
-        {
-          item_id:"AI001",
-          item_name:"AI Course",
-          price:999,
-          quantity:1
-        }
-      ]
-    }
-  });
+
+dataLayer.push({
+
+event:"add_to_cart",
+
+ecommerce:{
+
+items:[
+
+{
+item_id:itemId,
+
+item_name:itemName,
+
+price:itemPrice,
+
+quantity:1
+}
+
+]
+
+}
 
 });
 
 
+});
+
+
+
+
+
+
+// ======================
 // purchase
+// ======================
+
 
 document
 .getElementById("purchase-btn")
-.addEventListener("click", function(){
+.addEventListener("click",function(){
 
-  dataLayer.push({
-    event:"purchase",
-    ecommerce:{
-    purchase:{
-      transaction_id:"T001",
-      value:999,
-      currency:"TWD",
-      items:[
-        {
-          item_id:"AI001",
-          item_name:"AI Course",
-          price:999,
-          quantity:1
-        }
-      ]
-    }
-  }
-  });
+
+dataLayer.push({
+
+event:"purchase",
+
+ecommerce:{
+
+purchase:{
+
+transaction_id:
+"T001-"+itemId,
+
+value:itemPrice,
+
+currency:"TWD",
+
+items:[
+
+{
+item_id:itemId,
+
+item_name:itemName,
+
+price:itemPrice,
+
+quantity:1
+}
+
+]
+
+}
+
+}
 
 });
 
+
+});
+
+
+
 </script>
-  
+
+
 </body>
+
 </html>
