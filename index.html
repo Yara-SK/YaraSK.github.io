@@ -1,44 +1,183 @@
 <!DOCTYPE html>
 <html>
-<head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SV8H6QHPD3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-SV8H6QHPD3');
+<head>
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];
+w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WRCX9TWB');
 </script>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WRCX9TWB');</script>
+
 <!-- End Google Tag Manager -->
-  <title>Growth Lab</title>
-  <link rel="stylesheet" href="css/style.css">
+
+<title>AI Store</title>
+
 </head>
 
+
 <body>
+
+
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRCX9TWB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <h1>AI Course</h1>
+<noscript>
+<iframe 
+src="https://www.googletagmanager.com/ns.html?id=GTM-WRCX9TWB"
+height="0"
+width="0"
+style="display:none">
+</iframe>
+</noscript>
 
-  <p>Learn Growth x Data x AI</p>
 
-  <a href="product.html">
-    <button id="view-product-btn">
-      View Product
-    </button>
-  </a>
+<h1>AI Course Store</h1>
 
-  <script src="js/dataLayer.js"></script>
-  <script src="js/tracking.js"></script>
-  <script src="js/app.js"></script>
+
+<div>
+
+<h2>Products</h2>
+
+
+<button class="product-btn"
+data-id="AI001"
+data-name="AI Course"
+data-price="999">
+
+AI Course $999
+
+</button>
+
+
+<br><br>
+
+
+<button class="product-btn"
+data-id="SEO001"
+data-name="SEO Course"
+data-price="699">
+
+SEO Course $699
+
+</button>
+
+
+<br><br>
+
+
+<button class="product-btn"
+data-id="ADS001"
+data-name="Ads Course"
+data-price="1299">
+
+Ads Course $1299
+
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+window.dataLayer = window.dataLayer || [];
+
+
+// 商品列表曝光
+dataLayer.push({
+
+event:"view_item_list",
+
+ecommerce:{
+
+items:[
+
+{
+item_id:"AI001",
+item_name:"AI Course",
+price:999
+},
+
+{
+item_id:"SEO001",
+item_name:"SEO Course",
+price:699
+},
+
+{
+item_id:"ADS001",
+item_name:"Ads Course",
+price:1299
+}
+
+]
+
+}
+
+});
+
+
+
+
+// 點擊商品
+
+document
+.querySelectorAll(".product-btn")
+.forEach(function(button){
+
+
+button.addEventListener("click",function(){
+
+
+dataLayer.push({
+
+event:"select_item",
+
+ecommerce:{
+
+items:[
+
+{
+item_id:this.dataset.id,
+
+item_name:this.dataset.name,
+
+price:Number(this.dataset.price)
+
+}
+
+]
+
+}
+
+});
+
+
+
+
+// 跳商品頁
+
+window.location.href="product.html";
+
+
+});
+
+
+});
+
+
+</script>
+
+
 
 </body>
+
 </html>
