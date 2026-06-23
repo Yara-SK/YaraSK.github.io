@@ -165,7 +165,13 @@ price:Number(this.dataset.price)
 
 // 跳商品頁
 
-window.location.href="product.html";
+window.location.href=
+  "product.html?id="
++this.dataset.id
++"&name="
++encodeURIComponent(this.dataset.name)
++"&price="
++this.dataset.price;
 
 
 });
