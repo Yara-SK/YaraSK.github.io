@@ -82,6 +82,21 @@ window.dataLayer = window.dataLayer || [];
 const params =
 new URLSearchParams(window.location.search);
 
+// Debug 看網址參數有沒有拿到
+console.log(
+  "itemId:",
+  params.get("id")
+);
+
+console.log(
+  "itemName:",
+  params.get("name")
+);
+
+console.log(
+  "itemPrice:",
+  params.get("price")
+);
 
 const itemId =
 params.get("id") || "AI001";
