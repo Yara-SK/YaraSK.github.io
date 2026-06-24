@@ -166,13 +166,19 @@ item
 
 // 前往 checkout
 
-window.location.href =
-"checkout.html?id="
-+itemId
-+"&name="
-+encodeURIComponent(itemName)
-+"&price="
-+itemPrice;
+document
+.getElementById("checkout-btn")
+.addEventListener("click", function(){
+
+    window.location.href =
+    "checkout.html?id="
+    + itemId
+    + "&name="
+    + encodeURIComponent(itemName)
+    + "&price="
+    + itemPrice;
+
+});
 
 
 
