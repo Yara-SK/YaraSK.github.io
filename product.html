@@ -64,12 +64,6 @@ Add To Cart
 </button>
 
 
-<button id="purchase-btn">
-Buy Now
-</button>
-
-
-
 <script>
 
 window.dataLayer = window.dataLayer || [];
@@ -201,52 +195,6 @@ window.location.href =
 });
 
 
-
-
-
-
-
-// ======================
-// purchase
-// (目前保留測試用)
-// ======================
-
-
-document
-.getElementById("purchase-btn")
-.addEventListener("click",function(){
-
-
-dataLayer.push({
-
-event:"purchase",
-
-ecommerce:{
-
-transaction_id:
-"T001-"+itemId,
-
-value:itemPrice,
-
-currency:"TWD",
-
-items:[
-
-{
-item_id:itemId,
-item_name:itemName,
-price:itemPrice,
-quantity:1
-}
-
-]
-
-}
-
-});
-
-
-});
 
 
 
