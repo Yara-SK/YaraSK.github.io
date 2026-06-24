@@ -164,42 +164,6 @@ item
 
 
 
-
-
-
-
-// =====================
-// begin_checkout
-// =====================
-
-
-document
-.getElementById("checkout-btn")
-.addEventListener("click",function(){
-
-
-dataLayer.push({
-
-event:"begin_checkout",
-
-ecommerce:{
-
-value:itemPrice,
-
-currency:"TWD",
-
-items:[
-
-item
-
-]
-
-}
-
-});
-
-
-
 // 前往 checkout
 
 window.location.href =
